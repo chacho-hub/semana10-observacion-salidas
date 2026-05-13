@@ -1,0 +1,15 @@
+# Material privado del docente
+carpeta_profesor/
+**/*SOLO_PROFESOR*
+
+# Archivos temporales
+.DS_Store
+Thumbs.db
+*.log
+*.zip
+
+# Configuración local
+.vscode/
+.idea/
+.env
+.env.*
