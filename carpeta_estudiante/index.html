@@ -31,10 +31,10 @@
         <input type="text" id="dia" placeholder="Ejemplo: Lunes" />
 
         <label for="leche">Litros de leche</label>
-        <input type="text" id="leche" placeholder="Ejemplo: 10" />
+        <input type="number" id="leche" placeholder="Ejemplo: 10" min="0" step="0.1" inputmode="decimal" />
 
         <label for="maiz">Kilos de maíz</label>
-        <input type="text" id="maiz" placeholder="Ejemplo: 20" />
+        <input type="number" id="maiz" placeholder="Ejemplo: 20" min="0" step="0.1" inputmode="decimal" />
 
         <label for="responsable">Responsable</label>
         <input type="text" id="responsable" placeholder="Ejemplo: Ana" />
@@ -64,6 +64,12 @@
       <p>
         Ejecuta los casos y revisa si el sistema cumple el objetivo funcional.
       </p>
+      <div class="leyenda-estados">
+        <span class="estado estado--exito">Éxito</span>
+        <span class="estado estado--advertencia">Advertencia</span>
+        <span class="estado estado--error">Error</span>
+        <span class="estado estado--info">No aplica</span>
+      </div>
       <div class="tabla-contenedor">
         <table>
           <thead>

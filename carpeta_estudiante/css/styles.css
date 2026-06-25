@@ -1,15 +1,17 @@
 :root {
-  --fondo: #f3f7ee;
+  --fondo: #eff6ee;
   --panel: #ffffff;
-  --texto: #17311d;
+  --texto: #1d3a1f;
   --muted: #5f6f63;
-  --borde: #d9e3d2;
+  --borde: #d3dfcf;
   --primario: #2f7d32;
-  --primario-oscuro: #1e5b22;
+  --primario-oscuro: #1f5b22;
   --error: #b42318;
   --advertencia: #9a6700;
   --exito: #1a7f37;
   --info: #0969da;
+  --fondo-claro: #f9fdf6;
+  --panel-oscuro: #edf5e6;
 }
 
 * {
@@ -18,87 +20,112 @@
 
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: var(--fondo);
+  font-family: "Inter", Arial, Helvetica, sans-serif;
+  background: radial-gradient(circle at top left, #eef7ed 0%, var(--fondo) 45%);
   color: var(--texto);
 }
 
 .app {
-  width: min(1100px, 94%);
+  width: min(1120px, 96%);
   margin: 0 auto;
-  padding: 24px 0 40px;
+  padding: 28px 0 44px;
 }
 
 .hero {
-  background: linear-gradient(135deg, #1f6b2a, #8fb339);
+  background: linear-gradient(135deg, #1f6b2a, #82b153);
   color: white;
-  padding: 28px;
-  border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  padding: 30px;
+  border-radius: 22px;
+  box-shadow: 0 16px 36px rgba(18, 52, 24, 0.16);
 }
 
 .hero h1 {
-  margin: 8px 0;
-  font-size: clamp(2rem, 4vw, 3.2rem);
+  margin: 12px 0 10px;
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.05;
+}
+
+.hero p {
+  max-width: 720px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  opacity: 0.95;
 }
 
 .etiqueta {
   margin: 0;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   font-size: 0.85rem;
   opacity: 0.9;
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: minmax(300px, 1fr) minmax(320px, 1fr);
+  gap: 24px;
 }
 
 .panel {
   background: var(--panel);
   border: 1px solid var(--borde);
-  border-radius: 18px;
-  padding: 20px;
-  margin-top: 20px;
-  box-shadow: 0 8px 24px rgba(24, 49, 29, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  margin-top: 22px;
+  box-shadow: 0 12px 24px rgba(24, 49, 29, 0.08);
+}
+
+.panel h2,
+.panel h3 {
+  margin-top: 0;
 }
 
 label {
   display: block;
-  margin-top: 14px;
-  font-weight: bold;
+  margin-top: 16px;
+  font-weight: 700;
 }
 
 input {
   width: 100%;
-  padding: 12px;
-  margin-top: 6px;
+  padding: 14px 15px;
+  margin-top: 8px;
   border: 1px solid var(--borde);
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 1rem;
+  background: #fbfdf8;
+}
+
+input:focus {
+  outline: 3px solid rgba(47, 125, 50, 0.18);
+  border-color: var(--primario);
 }
 
 .acciones {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
+  gap: 12px;
+  margin-top: 22px;
 }
 
 button {
   border: none;
-  border-radius: 12px;
-  padding: 12px 14px;
+  border-radius: 14px;
+  padding: 14px 18px;
   background: var(--primario);
   color: white;
-  font-weight: bold;
+  font-weight: 700;
   cursor: pointer;
+  transition: transform 0.18s ease, background-color 0.18s ease;
 }
 
 button:hover {
   background: var(--primario-oscuro);
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: 3px solid rgba(9, 105, 218, 0.24);
 }
 
 button.secundario {
@@ -106,21 +133,77 @@ button.secundario {
 }
 
 button.fantasma {
-  background: #e7eee3;
+  background: #ebf1ea;
   color: var(--texto);
 }
 
 .salida {
   min-height: 90px;
-  border: 1px dashed var(--borde);
-  border-radius: 14px;
-  padding: 14px;
-  background: #f8faf7;
+  border: 1px solid var(--borde);
+  border-radius: 16px;
+  padding: 18px;
+  background: var(--fondo-claro);
   white-space: pre-line;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
-/* TODO-S10-CSS-01: Agrega clases visuales para salida de error, advertencia, éxito e información. */
-/* Sugerencia: usa las variables --error, --advertencia, --exito y --info. */
+.salida--error {
+  border-color: rgba(180, 35, 24, 0.35);
+  background: rgba(180, 35, 24, 0.08);
+  color: var(--error);
+}
+
+.salida--advertencia {
+  border-color: rgba(154, 103, 0, 0.35);
+  background: rgba(154, 103, 0, 0.1);
+  color: var(--advertencia);
+}
+
+.salida--exito {
+  border-color: rgba(26, 127, 55, 0.35);
+  background: rgba(26, 127, 55, 0.1);
+  color: var(--exito);
+}
+
+.salida--info {
+  border-color: rgba(9, 105, 218, 0.35);
+  background: rgba(9, 105, 218, 0.08);
+  color: var(--info);
+}
+
+.leyenda-estados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 16px 0 10px;
+}
+
+.estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: white;
+}
+
+.estado--exito {
+  background: var(--exito);
+}
+
+.estado--advertencia {
+  background: var(--advertencia);
+}
+
+.estado--error {
+  background: var(--error);
+}
+
+.estado--info {
+  background: var(--info);
+}
 
 .tabla-contenedor {
   overflow-x: auto;
@@ -129,23 +212,51 @@ button.fantasma {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 12px;
+  margin-top: 14px;
 }
 
 th,
 td {
   border: 1px solid var(--borde);
-  padding: 10px;
+  padding: 12px;
   text-align: left;
   vertical-align: top;
 }
 
 th {
-  background: #e8f1e3;
+  background: #e7f0e0;
+}
+
+tbody tr:nth-child(even) {
+  background: #fbfdf8;
+}
+
+.fila-error {
+  background: rgba(180, 35, 24, 0.08);
+}
+
+.fila-advertencia {
+  background: rgba(154, 103, 0, 0.08);
+}
+
+.fila-exito {
+  background: rgba(26, 127, 55, 0.08);
+}
+
+.fila-no-cumple {
+  border-left: 4px solid rgba(180, 35, 24, 0.7);
+}
+
+.fila-cumple {
+  border-left: 4px solid rgba(26, 127, 55, 0.7);
 }
 
 @media (max-width: 780px) {
   .layout {
     grid-template-columns: 1fr;
+  }
+
+  .acciones {
+    flex-direction: column;
   }
 }
